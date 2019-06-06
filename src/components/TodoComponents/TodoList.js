@@ -3,29 +3,16 @@
 import React from "react"
 import { directive } from "@babel/types";
 import Todo from './Todo'
+// import todoData from './todoData'
 
 
-  const todoData= [
-    {
-      task: 'Organize Garage',
-      id: 1528817077286,
-      completed: false
-    },
-    {
-      task: 'Bake Cookies',
-      id: 1528817084358,
-      completed: false
-    }
-  ];
-
-class TodoList extends React.Component {
-  constructor(){
-      super()
-  }
+ 
 
   
- render(){
-    const dataFromArray = todoData.map(item => <Todo key={item.id} task={item.task}/>)
+
+function TodoList(props)  {
+ 
+    const dataFromArray = props.newtask.map(item => <Todo key={item.id} task={item.task}/>)
 
     return(
         <div>
@@ -33,7 +20,7 @@ class TodoList extends React.Component {
         </div>
     )
 
- }
+ 
 
 
 }

@@ -5,11 +5,11 @@ import React from "react"
 function TodoForm(props) {
    
      return(
-        <form>
+        <form onSubmit={props.text}>
         <input 
         type="text" 
-        value={props.task}
-        onChange={props.onChangeHandler}
+        value={props.value}
+        onChange={props.onChange}
         
          />
 
