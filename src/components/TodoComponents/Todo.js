@@ -5,7 +5,8 @@ import React from "react"
 function Todo(props) {
   
    return(
-       <div>
+       <div onClick={() => props.itemCompleted(props.taskId)}>
+    
         {props.task}
        </div>
    )

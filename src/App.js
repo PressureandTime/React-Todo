@@ -26,17 +26,15 @@ class App extends React.Component {
   
 
   addTask = (event)=> {
-   
     event.preventDefault()
+
     const newTask = {
       id: new Date().getTime(),
       task:this.state.anotherSomething,
       completed : false,
     };
 
-
     this.setState({
-      
       something:this.state.something.concat(newTask),
       anotherSomething:'',
   
@@ -45,11 +43,32 @@ class App extends React.Component {
 
   }
 
+  markItemAsCompleted = (id) => {
+    
+     const newItems =  this.state.something.map(item => {
+       if (item.id === id) {
+        item.completed = !item.completed
+        return item;
+       }
+       return item;
+     })
+    
+     this.setState({something:newItems})
+  }
+
+
   render() {
     return (
       <div>
-       <TodoList newtask={this.state.something}/>
-       <TodoForm text={this.addTask} value={this.state.anotherSomething} onChange={this.onChangeHandler}/>
+       <TodoList 
+       newtask={this.state.something}
+       markItemAsCompletedFunction={this.markItemAsCompleted}
+
+       />
+
+       <TodoForm text={this.addTask} 
+       value={this.state.anotherSomething} 
+       onChange={this.onChangeHandler}/>
 
       </div>
     );
@@ -57,3 +76,8 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+
+
