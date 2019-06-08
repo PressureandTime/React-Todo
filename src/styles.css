@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  background-color:#e6f0b6;
+}
+
+
+
+
+.completed {
+    background-color: #d17d7c;
+    text-decoration: line-through;
+  }
+
+
+
+  .app-wrapper {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 1.5rem;
+    margin: 0 auto; 
+  }
