@@ -3,8 +3,7 @@
 import React from 'react';
 import { directive } from '@babel/types';
 import Todo from './Todo';
-// import todoData from './todoData'
-
+import './Todo.css';
 
 class TodoList extends React.Component {
 
@@ -14,18 +13,19 @@ class TodoList extends React.Component {
 
   render() {
 
-
-
-    
     return (
-      <div>
-        {/* {dataFromArray} */}
+      <div className="todo-wrapper">
 
         {
-         this.props.newtask.map((item) => ( <Todo 
+
+         this.props.newtask.map((item) => ( 
+           
+         <Todo 
          key={item.id} 
-         task={item.task} taskId={item.id}  
+         task={item.task} taskId={item.id}
+         check={item.completed}  
          itemCompleted={this.props.markItemAsCompletedFunction} />))
+
        }
       </div>
     );
@@ -33,7 +33,6 @@ class TodoList extends React.Component {
 
 
 }
-
 
 export default TodoList;
 

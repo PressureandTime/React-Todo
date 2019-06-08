@@ -1,10 +1,8 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList'
-import Todo from './components/TodoComponents/Todo'
 import todoData from './components/TodoComponents/todoData'
 import TodoForm from './components/TodoComponents/TodoForm'
-
-
+import './styles.css'
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -23,7 +21,14 @@ class App extends React.Component {
      this.setState({anotherSomething:event.target.value});
 
   }
-  
+
+  removeCompleted = () => {
+     let isItcompleted = this.state.something;
+     console.log(isItcompleted);
+     isItcompleted = isItcompleted.filter((item) => item.completed !== true);
+     this.setState({something:isItcompleted})
+     console.log(isItcompleted)
+  }
 
   addTask = (event)=> {
     event.preventDefault()
@@ -56,19 +61,20 @@ class App extends React.Component {
      this.setState({something:newItems})
   }
 
-
   render() {
     return (
-      <div>
+      <div className="app-wrapper">
        <TodoList 
        newtask={this.state.something}
        markItemAsCompletedFunction={this.markItemAsCompleted}
-
+       checkIfcompleted={this.state.something.completed}
        />
-
+        <br/><br/>
        <TodoForm text={this.addTask} 
        value={this.state.anotherSomething} 
-       onChange={this.onChangeHandler}/>
+       onChange={this.onChangeHandler}
+        remove={this.removeCompleted}
+       />
 
       </div>
     );
